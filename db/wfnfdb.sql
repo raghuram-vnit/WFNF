@@ -33,7 +33,6 @@ create table if not exists role_master(
 
 create table if not exists user_master(
        user_id int unsigned not null auto_increment primary key,
-       registration_no varchar(20) not null unique,
        user_fname varchar(100) not null,
        user_mname varchar(100),
        user_lname varchar(100) not null,
@@ -45,8 +44,8 @@ create table if not exists user_master(
        user_pin varchar(10) not null default "111111",
        user_photo varchar(100) not null default "NULL",
        user_phone varchar(12) not null default "9999999999",
-       user_email varchar(100) not null,
-       user_status int not null default 4,
+       user_email varchar(100) not null unique,
+       user_status varchar(10) not null default "Active",
        user_created timestamp DEFAULT '0000-00-00 00:00:00',
        user_updated timestamp DEFAULT current_timestamp on update current_timestamp,
        unique key(user_email)
