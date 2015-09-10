@@ -66,3 +66,22 @@ create table if not exists send_email(
   invalid int(10) not null default '0'
 )ENGINE=INNODB CHARSET=utf8;
 
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `event_date` date NOT NULL primary key,
+  `total_events` int(50) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ 
+CREATE TABLE IF NOT EXISTS `event_detail` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT primary key,
+  `event_date` date NOT NULL,
+  `event_time` time NOT NULL,
+  `event` varchar(200) NOT NULL,
+  KEY `event_date` (`event_date`)
+) ENGINE=INNODB CHARSET=utf8;
+ 
+ALTER TABLE `event_detail`
+  ADD CONSTRAINT `event_detail_fk` FOREIGN KEY (`event_date`) REFERENCES `events` (`event_date`);
+
+
+
