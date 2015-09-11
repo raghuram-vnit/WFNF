@@ -20,7 +20,8 @@ class FarmerRegistration extends CI_Controller {
        $this->form_validation->set_rules('phoneNumber','PhoneNumber','required|numeric');  
        $this->form_validation->set_rules('email', 'Email', 'required');  
        $this->form_validation->set_rules('password', 'Password', 'required');  
-       $this->form_validation->set_rules('pincode', 'Pincode', 'required');  
+       $this->form_validation->set_rules('pincode', 'Pincode', 'required');
+       $this->form_validation->set_rules('userType', 'UserType', 'required');  
        if ($this->form_validation->run())  
        {       
        		$register=$this->registration_model->insertdata($_POST);

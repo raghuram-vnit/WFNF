@@ -1,6 +1,6 @@
 <?php  
  class registration_model extends CI_Model {  
-      function insertdata($options = array()){  
+      function insertdata($options = array()) {  
             if(isset($options['userName']))  
                 $this->db->set('user_fname',strip_tags($options['userName']));  
             if(isset($options['firstName']))  
@@ -16,7 +16,12 @@
             if(isset($options['pincode']))  
                 $this->db->set('user_pin',strip_tags($options['pincode']));   
                 
-            $this->db->insert("user_master");  
+            $this->db->insert("user_master"); 
+            $table1_id = $this->db->insert_id();
+
+            $this->db->set('user_id', $table1_id); 
+            $this->db->set('role_name', strip_tags($options['userType'])); 
+            $this->db->insert("user_role_map");  
             
            return $this->db->insert_id();  
       }  

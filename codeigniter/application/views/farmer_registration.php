@@ -32,9 +32,17 @@
 				<div class="box">
 					<div class="box-content">
 						<div class="text-center">
-							<h3 class="page-header">WFNF Farmer Register Page</h3>
+							<h3 class="page-header">WFNF Registration Page</h3>
 						</div>
             			<form action="http://localhost/codeigniter/index.php/farmerRegistration/registration/" name="farmerRegistrationForm" id="farmerRegistrationForm" method="post" >  
+						<div>
+							<input type="radio" name="userType"
+							<?php if (isset($userType) && $userType=="farmer") echo "checked";?>
+							value="Farmer"><label class="control-label">Farmer</label>
+							<input type="radio" name="userType"
+							<?php if (isset($userType) && $userType=="volunteer") echo "checked";?>
+							value="Volunteer"><label class="control-label">Volunteer</label>
+						</div>						
 						<div class="form-group">
 							<label class="control-label">Username</label>
 							<input type="text" class="form-control" name="userName" />
@@ -63,6 +71,7 @@
 							<label class="control-label">Pincode</label>
 							<input type="text" class="form-control" name="pincode" />
 						</div>
+						<input type="hidden" class="form-control" name="user_type" value="Farmer"/>
 						<div class="text-center">
 							<input type="submit" class="btn btn-primary" value="Register"/>
 						</div>
